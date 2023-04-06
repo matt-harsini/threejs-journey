@@ -10,6 +10,8 @@ const material = new THREE.MeshBasicMaterial({
 });
 
 const mesh = new THREE.Mesh(geometry, material);
+mesh.position.z = -3;
+console.log(mesh.position);
 scene.add(mesh);
 
 const sizes = {
@@ -18,7 +20,6 @@ const sizes = {
 };
 
 const camera = new THREE.PerspectiveCamera(75, sizes.width / sizes.height);
-camera.position.z = 3;
 scene.add(camera);
 
 const renderer = new THREE.WebGLRenderer({
@@ -27,26 +28,3 @@ const renderer = new THREE.WebGLRenderer({
 
 renderer.setSize(sizes.width, sizes.height);
 renderer.render(scene, camera);
-
-// Trying to understand the architecture of the library
-
-class Test {
-  constructor(name, age) {
-    this.name = name;
-    this.age = age;
-  }
-
-  printInfo() {
-    console.log(
-      `Hello, my name is ${this.name} and I am ${this.age} years old`
-    );
-    return {
-      test: "Bing chilling",
-    };
-  }
-}
-
-const person = new Test("Matthew", 24).printInfo();
-const person2 = new Test("e", 1);
-console.log(person);
-console.log(person2);
